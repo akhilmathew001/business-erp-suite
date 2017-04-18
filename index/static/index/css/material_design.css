@@ -1,0 +1,528 @@
+body {
+  margin: 0;
+}
+
+/* Disable ugly boxes around images in IE10 */
+a img{
+  border: 0px;
+}
+
+::-moz-selection {
+  background-color: #6ab344;
+  color: #fff;
+}
+
+::selection {
+  background-color: #6ab344;
+  color: #fff;
+}
+
+.erp-search-box .mdl-textfield__input {
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.erp-header .mdl-menu__container {
+  z-index: 50;
+  margin: 0 !important;
+}
+
+
+.mdl-textfield--expandable {
+  width: auto;
+}
+
+.erp-fab {
+  position: absolute;
+  right: 20%;
+  bottom: -26px;
+  z-index: 3;
+  background: #64ffda !important;
+  color: black !important;
+}
+
+.erp-mobile-title {
+  display: none !important;
+}
+
+
+.erp-logo-image {
+  height: 28px;
+  width: 140px;
+}
+
+
+.erp-header {
+  overflow: visible;
+  background-color: white;
+}
+
+  .erp-header .material-icons {
+    color: #767777 !important;
+  }
+
+  .erp-header .mdl-layout__drawer-button {
+    background: transparent;
+    color: #767777;
+  }
+
+  .erp-header .mdl-navigation__link {
+    color: #757575;
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  .erp-navigation-container {
+    /* Simple hack to make the overflow happen to the left instead... */
+    direction: rtl;
+    order: 1;
+    width: 500px;
+    transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+        width 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .erp-navigation {
+    /* ... and now make sure the content is actually LTR */
+    direction: ltr;
+    justify-content: flex-end;
+    width: 9000px;
+  }
+
+  .erp-search-box.is-focused + .erp-navigation-container {
+    opacity: 0;
+    width: 100px;
+  }
+
+
+  .erp-navigation .mdl-navigation__link {
+    display: inline-block;
+    height: 60px;
+    line-height: 68px;
+    background-color: transparent !important;
+    border-bottom: 4px solid transparent;
+  }
+
+    .erp-navigation .mdl-navigation__link:hover {
+      border-bottom: 4px solid #8bc34a;
+    }
+
+  .erp-search-box {
+    order: 2;
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+
+  .erp-more-button {
+    order: 3;
+  }
+
+
+.erp-drawer {
+  border-right: none;
+}
+
+  .erp-drawer-separator {
+    height: 1px;
+    background-color: #dcdcdc;
+    margin: 8px 0;
+  }
+
+  .erp-drawer .mdl-navigation__link.mdl-navigation__link {
+    font-size: 14px;
+    color: #757575;
+  }
+
+  .erp-drawer span.mdl-navigation__link.mdl-navigation__link {
+    color: #8bc34a;
+  }
+
+  .erp-drawer .mdl-layout-title {
+    position: relative;
+    background: #6ab344;
+    height: 160px;
+  }
+
+    .erp-drawer .erp-logo-image {
+      position: absolute;
+      bottom: 16px;
+    }
+
+.erp-be-together-section {
+  position: relative;
+  height: 800px;
+  width: auto;
+  background-color: #f3f3f3;
+  background: url('/static/index/images/slide01.jpg') center 30% no-repeat;
+  background-size: cover;
+}
+
+.logo-font {
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  line-height: 1;
+  color: #767777;
+  font-weight: 500;
+}
+
+.erp-slogan {
+  font-size: 60px;
+  padding-top: 160px;
+}
+
+.erp-sub-slogan {
+  font-size: 21px;
+  padding-top: 24px;
+}
+
+.erp-create-character {
+  font-size: 21px;
+  padding-top: 400px;
+}
+
+  .erp-create-character a {
+    text-decoration: none;
+    color: #767777;
+    font-weight: 300;
+  }
+
+.erp-screen-section {
+  position: relative;
+  padding-top: 60px;
+  padding-bottom: 80px;
+}
+
+.erp-screens {
+  text-align: right;
+  width: 100%;
+  white-space: nowrap;
+  overflow-x: auto;
+  background:url('/static/index/images/slide01.jpg');
+}
+
+.erp-screen {
+  text-align: center;
+}
+
+.erp-screen .erp-link {
+  margin-top: 16px;
+  display: block;
+  z-index: 2;
+}
+
+.erp-image-link {
+  text-decoration: none;
+}
+
+.erp-wear {
+  display: inline-block;
+  width: 160px;
+  margin-right: 32px;
+}
+
+  .erp-wear .erp-screen-image {
+    width: 40%;
+    z-index: 1;
+  }
+
+
+.erp-phone {
+  display: inline-block;
+  width: 64px;
+  margin-right: 48px;
+}
+
+  .erp-phone .erp-screen-image {
+    width: 100%;
+    z-index: 1;
+  }
+
+
+.erp-tablet {
+  display: inline-block;
+  width: 110px;
+  margin-right: 64px;
+}
+
+  .erp-tablet .erp-screen-image {
+    width: 100%;
+    z-index: 1;
+  }
+
+  .erp-tablet .erp-link {
+    display: block;
+    z-index: 2;
+  }
+
+
+.erp-tv {
+  display: inline-block;
+  width: 300px;
+  margin-right: 80px;
+}
+
+  .erp-tv .erp-screen-image {
+    width: 100%;
+    z-index: 1;
+  }
+
+
+.erp-auto {
+  display: inline-block;
+  width: 300px;
+  overflow: hidden;
+}
+
+  .erp-auto .erp-screen-image {
+    display: block;
+    height: 300px;
+    z-index: 1;
+  }
+
+
+.erp-wear-section {
+  position: relative;
+  background: url('/static/index/images/wear.png') center top no-repeat;
+  background-size: cover;
+  height: 800px;
+}
+
+.erp-wear-band {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  background-color: #37474f;
+}
+
+.erp-wear-band-text {
+  max-width: 800px;
+  margin-left: 25%;
+  padding: 24px;
+  text-align: left;
+  color: white;
+}
+
+  .erp-wear-band-text p {
+    padding-top: 8px;
+  }
+
+.erp-link {
+  text-decoration: none;
+  color: #8bc34a !important;
+}
+
+  .erp-link:hover {
+    color: #7cb342 !important;
+  }
+
+  .erp-link .material-icons {
+    position: relative;
+    top: -1px;
+    vertical-align: middle;
+  }
+
+.erp-alt-link {
+  text-decoration: none;
+  color: #64ffda !important;
+  font-size: 16px;
+}
+
+  .erp-alt-link:hover {
+    color: #00bfa5 !important;
+  }
+
+  .erp-alt-link .material-icons {
+    position: relative;
+    top: 6px;
+  }
+
+.erp-customized-section {
+  text-align: center;
+}
+
+.erp-customized-section-text {
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 80px 16px 0 16px;
+}
+
+  .erp-customized-section-text p {
+    padding-top: 16px;
+  }
+
+.erp-customized-section-image {
+  background: url('/static/index/images/banner.jpg') center top no-repeat;
+  background-size: cover;
+  height: 660px;
+}
+
+.erp-more-section {
+  padding: 80px 0;
+  max-width: 1044px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+  .erp-more-section .erp-section-title {
+    margin-left: 12px;
+    padding-bottom: 24px;
+  }
+
+.erp-card-container {
+}
+
+  .erp-card-container .mdl-card__media {
+    overflow: hidden;
+    background: transparent;
+  }
+
+    .erp-card-container .mdl-card__media img {
+      width: 100%;
+    }
+
+  .erp-card-container .mdl-card__title {
+    background: transparent;
+    height: auto;
+  }
+
+  .erp-card-container .mdl-card__title-text {
+    color: black;
+    height: auto;
+  }
+
+  .erp-card-container .mdl-card__supporting-text {
+    height: auto;
+    color: black;
+    padding-bottom: 56px;
+  }
+
+  .erp-card-container .mdl-card__actions {
+    position: absolute;
+    bottom: 0;
+  }
+
+  .erp-card-container .mdl-card__actions a {
+    border-top: none;
+    font-size: 16px;
+  }
+
+.erp-footer {
+  background-color: #fafafa;
+  position: relative;
+}
+
+  .erp-footer a:hover {
+    color: #8bc34a;
+  }
+
+  .erp-footer .mdl-mega-footer--top-section::after {
+    border-bottom: none;
+  }
+
+  .erp-footer .mdl-mega-footer--middle-section::after {
+    border-bottom: none;
+  }
+
+  .erp-footer .mdl-mega-footer--bottom-section {
+    position: relative;
+  }
+
+  .erp-footer .mdl-mega-footer--bottom-section a {
+    margin-right: 2em;
+  }
+
+  .erp-footer .mdl-mega-footer--right-section a .material-icons {
+    position: relative;
+    top: 6px;
+  }
+
+
+.erp-link-menu:hover {
+  cursor: pointer;
+}
+
+.erp-nav-bar{
+	
+	box-shadow: 0px -4px 17px 0px black;
+    text-shadow: 0px 0px 0px black;
+    /* background-color: #37474f; */
+	
+}
+
+
+/**** Mobile layout ****/
+@media (max-width: 900px) {
+  .erp-navigation-container {
+    display: none;
+  }
+
+  .erp-title {
+    display: none !important;
+  }
+
+  .erp-mobile-title {
+    display: block !important;
+    position: absolute;
+    left: calc(50% - 70px);
+    top: 12px;
+    transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* WebViews in iOS 9 break the "~" operator, and WebViews in OS X 10.10 break
+     consecutive "+" operators in some cases. Therefore, we need to use both
+     here to cover all the bases. */
+  .erp.erp-search-box.is-focused ~ .erp-mobile-title,
+  .erp-search-box.is-focused + .erp-navigation-container + .erp-mobile-title {
+    opacity: 0;
+  }
+
+  .erp-more-button {
+    display: none;
+  }
+
+  .erp-search-box.is-focused {
+    width: calc(100% - 48px);
+  }
+
+  .erp-search-box .mdl-textfield__expandable-holder {
+    width: 100%;
+  }
+
+  .erp-be-together-section {
+    height: 350px;
+  }
+
+  .erp-slogan {
+    font-size: 26px;
+    margin: 0 16px;
+    padding-top: 24px;
+  }
+
+  .erp-sub-slogan {
+    font-size: 16px;
+    margin: 0 16px;
+    padding-top: 8px;
+  }
+
+  .erp-create-character {
+    padding-top: 200px;
+    font-size: 16px;
+  }
+
+  .erp-create-character img {
+    height: 12px;
+  }
+
+  .erp-fab {
+    display: none;
+  }
+
+  .erp-wear-band-text {
+    margin-left: 0;
+    padding: 16px;
+  }
+
+  .erp-footer .mdl-mega-footer--bottom-section {
+    display: none;
+  }
+}
+
