@@ -21,8 +21,8 @@ Installation
 
 1. Checkout sources from the GIT repository:
 
-    git clone https://github.com/djangoERPTeam/django-erp.git
-    or Download Zip version
+   > git clone https://github.com/akhilmathew001/business-erp-suite.git
+   > or Download Zip version
 
 2. Initialize the database and all applications:
      > python manage.py migrate
