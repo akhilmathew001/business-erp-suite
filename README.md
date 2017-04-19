@@ -9,7 +9,7 @@ Pre-requisites
 
 Make sure you have the following pre-requisites installed:
 
- * **python** >= 2.7 (required)
+ * **python** = 2.7 (required)
    http://www.python.org
 
  * **django** >= 1.9 (required)
