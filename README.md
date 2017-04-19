@@ -32,4 +32,7 @@ Installation process
 4. Run the development web-server 
       >http://localhost:8000 on your browser
 
-    
+  
+Code courtesy
+------------
+>Getmdl for HTML Template and Styling
