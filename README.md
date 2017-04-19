@@ -35,4 +35,4 @@ Installation process
   
 Code courtesy
 ------------
->Getmdl for HTML Template and Styling
+> https://getmdl.io (Google Material-Design-Lite) for HTML Template and CSS Styling
