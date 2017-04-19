@@ -2,7 +2,7 @@
 Business ERP Suite
 ==========
 
-**Business ERP Suite** is an _open-source_  *ERP system* based on Django framework.
+>**Business ERP Suite** is an _open-source_  *ERP system* based on Django framework.
 
 Pre-requisites
 --------------
@@ -10,10 +10,10 @@ Pre-requisites
 Make sure you have the following pre-requisites installed:
 
  * **python** = 2.7 (required)
-   http://www.python.org
+   >http://www.python.org
 
  * **django** >= 1.9 (required)
-   https://www.djangoproject.com/download/
+   >https://www.djangoproject.com/download/
 
 
 Installation process
