@@ -25,9 +25,9 @@ Installation
     or Download Zip version
 
 2. Initialize the database and all applications:
-      python manage.py migrate
+     > python manage.py migrate
 3. Statrt server
-    python manage.py runserver
+     > python manage.py runserver
     
 4. Test the installation running the development web-server (http://localhost:8000 on your browser)
 
