@@ -139,45 +139,41 @@
       <form action="{% url 'crm:edit_lead' lead.id %}" method="post" id="form-jq">
         {% csrf_token %}
         <fieldset>
-          <legend><span class="number">1</span> Customer Info</legend>
-          <label for="customer_name">Name *</label>
-          <input type="text" name="customer_name" class="input-js" value="{{ customer_obj.name }}" placeholder="Name *" readonly="readonly"/>
-          <label for="is_company" style="margin-top: -16px; margin-bottom: 15px;">Is a company?
-            <input id="checkbox-onchange-jq" type="checkbox" name="is_company" {% if customer_obj.is_company %} value="True" {% else %} value="False" {% endif %} placeholder="Is company"/>
-          </label>
-          <div class="onchange-field" style="display:none;">
-            <label for="customer_company">Company</label>
-            <select id="comapany" name="customer_company" placeholder="Company" disabled="disabled">
-              <option value="none">Select company</option>
-              {% for company in companies %}
-                <option value="{{ company.id }}" {% if company == customer_obj.company %} selected="selected" {% endif %}>{{ company }}</option>
-                {% endfor %}
-            </select>
-          </div>
+          <legend><span class="number">1</span> Lead Info</legend>
+          <label for="lead_subject">Subject *</label>
+          <input type="text" name="lead_subject" class="input-js" value="{{ lead.subject }}" placeholder="Subject" readonly="readonly"/>
+          <label for="lead_customer">Customer</label>
+          <select id="customer" name="lead_costomer" placeholder="customer" disabled="disabled">
+            <option value="none">Select customer</option>
+            {% for customer in  customers %}
+              <option value="{{ customer.id }}" {% if customer == lead.customer %} selected="selected" {% endif %}>{{ customer }}</option>
+            {% endfor %}
+          </select>
           <label for="customer_email">Email</label>
-          <input type="email" name="customer_email" value="{{ customer_obj.email }}" placeholder="Email" readonly="readonly" />
+          <input type="email" name="customer_email" value="{{ lead.email }}" placeholder="Email" readonly="readonly" />
           <label for="customer_mobile">Mobile</label>
-          <input type="number" name="customer_mobile" value="{{ customer_obj.mobile }}" placeholder="Mobile" readonly="readonly"/>
+          <input type="number" name="customer_mobile" value="{{ lead.mobile }}" placeholder="Mobile" readonly="readonly"/>
           <label for="customer_street">Lane</label>
-          <input type="text" name="customer_street" value="{{ customer_obj.street }}" placeholder="Lane" readonly="readonly" />
+          <input type="text" name="customer_street" value="{{ lead.street }}" placeholder="Lane" readonly="readonly" />
           <label for="customer_street2">Street</label>
-          <input type="text" name="customer_street2" value="{{ customer_obj.street2 }}" placeholder="Street" readonly="readonly" />
+          <input type="text" name="customer_street2" value="{{ lead.street2 }}" placeholder="Street" readonly="readonly" />
           <label for="customer_city">City</label>
-          <input type="text" name="customer_city" value="{{ customer_obj.city }}" placeholder="City" readonly="readonly" />
+          <input type="text" name="customer_city" value="{{ lead.city }}" placeholder="City" readonly="readonly" />
           <label for="customer_state">State</label>
           <select id="state" name="customer_state" placeholder="State" disabled="disabled" >
             <option value="none">Select state</option>
             {% for state in  states %}
-              <option value="{{ state.id }}" {% if state == customer_obj.state %} selected="selected" {% endif %}>{{ state }}</option>
+              <option value="{{ state.id }}" {% if state == lead.state %} selected="selected" {% endif %}>{{ state }}</option>
             {% endfor %}
           </select>
           <label for="customer_country">Country</label>
           <select id="country" name="customer_country" placeholder="Country" disabled="disabled">
             <option value="none">Select country</option>
             {% for country in  countries %}
-              <option value="{{ country.id }}" {% if country == customer_obj.country %} selected="selected" {% endif %}>{{ country }}</option>
+              <option value="{{ country.id }}" {% if country == lead.country %} selected="selected" {% endif %}>{{ country }}</option>
             {% endfor %}
           </select>
+          
         </fieldset>
         <fieldset>
           <legend><span class="number">2</span> Product Info</legend>

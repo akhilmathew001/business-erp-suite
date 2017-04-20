@@ -10,12 +10,12 @@ from datetime import datetime
 
 class CrmLead(models.Model):
 
-    stage_choice = [('new','New'),('dead','Dead')]
+    stage_choice = [('new','New'),('progress','In progress'),('matured','Matured'),('dead','Dead')]
     priority_choice = [('low','Low'),('normal','Normal'),('high','High'),('veryhigh','Very High')]
 
     subject = models.CharField('Subject',max_length=300,blank=False)
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE, verbose_name='Customer',blank=False)
-    stage = models.CharField('Stage',choices=stage_choice, max_length=5, blank=False, default='new')
+    stage = models.CharField('Stage',choices=stage_choice, max_length=10, blank=False, default='new')
     priority = models.CharField('Priority',choices=priority_choice, max_length=10,default='normal')
     email = models.EmailField('Email',blank=True)
     mobile = models.BigIntegerField('Mobile',blank=True)
@@ -33,3 +33,13 @@ class CrmLead(models.Model):
 
     def __unicode__(self):
         return self.subject
+
+
+
+
+class CrmOpportunity(models.Model):
+    
+    
+    subject = models.CharField('Subject',max_length=300, blank=False)
+    customer = models.ForeignKey(Customer,verbose_name='Custommer', blank=False, on_delete=models.CASCADE)
+    stage = models.CharField('Stage',max_length=10)
