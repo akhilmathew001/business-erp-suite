@@ -5,7 +5,7 @@
     background: #f4f7f8;
     margin: 10px auto;
     padding: 20px;
-    background: #f4f7f8;
+    background: white !important;
     border-radius: 8px;
     font-family: Georgia, "Times New Roman", Times, serif;
     margin-top: 75px;
@@ -13,6 +13,7 @@
     box-sizing: border-box;
     box-shadow: 2px 2px 5px 1px rgba(0,0,0,0.2);
     border-radius: 3px;
+    box-shadow: 6px 8px 20px 0px black;
 }
 
 
@@ -195,10 +196,12 @@
   	float: right;
   	margin-right: 190px;
   	border: none;
+  	background: none;
 }
 
 .btn-pos{
 	margin-right: 10px;
+	background: none;
 }
 
 .btn-edit{

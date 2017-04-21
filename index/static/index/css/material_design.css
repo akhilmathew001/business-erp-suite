@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  background: linear-gradient(to right, #25c481, #25b7c4);
 }
 
 /* Disable ugly boxes around images in IE10 */
