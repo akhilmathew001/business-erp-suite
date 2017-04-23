@@ -131,64 +131,9 @@
         </button>
     </div>
       <div class="form-style-5">
-      <form action="{% url 'base:create_new_customer' %}" method="post" id="form-jq">
+      <form action="{% url 'crm:create_new_lead' %}" method="post" id="form-jq">
         {% csrf_token %}
-        <fieldset>
-          <legend><span class="number">1</span> Lead Info</legend>
-          <label for="customer_name">Name *</label>
-          <input type="text" name="customer_name" class="input-js" placeholder="Name *" readonly="readonly"/>
-          <label for="is_company" style="margin-top: -16px; margin-bottom: 15px;">Is a company?
-            <input id="checkbox-onchange-jq" type="checkbox" name="is_company"  placeholder="Is company"/>
-          </label>
-          <div class="onchange-field">
-            <label for="customer_company">Company</label>
-            <select id="comapany" name="customer_company" placeholder="Comapny" disabled="disabled">
-              <option value="none">Select company</option>
-              {% for company in companies %}
-                <option value="{{ company.id }}">{{ company }}</option>
-                {% endfor %}
-            </select>
-          </div>
-          <label for="customer_email">Email</label>
-          <input type="email" name="customer_email"  placeholder="Email" readonly="readonly" />
-          <label for="customer_mobile">Mobile</label>
-          <input type="number" name="customer_mobile"  placeholder="Mobile" readonly="readonly"/>
-          <label for="customer_street">Lane</label>
-          <input type="text" name="customer_street" placeholder="Lane" readonly="readonly" />
-          <label for="customer_street2">Street</label>
-          <input type="text" name="customer_street2" placeholder="Street" readonly="readonly" />
-          <label for="customer_city">City</label>
-          <input type="text" name="customer_city" placeholder="City" readonly="readonly" />
-          <label for="customer_state">State</label>
-          <select id="state" name="customer_state" placeholder="State" disabled="disabled" >
-            <option value="none">Select state</option>
-            {% for state in  states %}
-              <option value="{{ state.id }}">{{ state }}</option>
-            {% endfor %}
-          </select>
-          <label for="customer_country">Country</label>
-          <select id="country" name="customer_country" placeholder="Country" disabled="disabled">
-            <option value="none">Select country</option>
-            {% for country in  countries %}
-              <option value="{{ country.id }}">{{ country }}</option>
-            {% endfor %}
-          </select>
-        </fieldset>
-        <fieldset>
-          <legend><span class="number">2</span> Product Info</legend>
-          <label for="customer_product">Product</label>
-          <select id="prod" name="customer_product">
-            <option value="football">Football</option>
-            <option value="swimming">Swimming</option>
-            <option value="fishing">Fishing</option>
-            <option value="climbing">Climbing</option>
-          <select>
-        </fieldset>
-        <fieldset>
-          <legend><span class="number">3</span> Additional Info</legend>
-          <label for="customer_note">Note</label>
-          <textarea name="customer_note" placeholder="About customer"></textarea>
-        </fieldset>
+        {{ form }}
         <input type="submit" class="submit-jq mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" value="Save"/>
       </form>
     </div>

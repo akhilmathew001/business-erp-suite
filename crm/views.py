@@ -5,6 +5,8 @@ from base.models.company import Company,State,Country
 from django.views.decorators.cache import cache_control
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+from .forms import LeadForm
 # Create your views here.
 
 
@@ -24,10 +26,12 @@ def lead_form_view(request,lead_id):
             companies = Company.objects.all()
             states = State.objects.all()
             countries = Country.objects.all()
+            sales_persons = User.objects.all()
         except CrmLead.DoesNotExist:
             raise Http404('No lead found')
         else:
-            context = {'lead':lead,'customers':customers,'companies':companies,'states':states,'countries':countries}
+            context = {'lead':lead,'customers':customers,'companies':companies,'states':states,
+                       'countries':countries,'sales_persons':sales_persons}
             return render(request,'crm/crm_lead_form_view.html',context)
     else:
         raise Http404('No Lead Specified')
@@ -37,10 +41,40 @@ def lead_save_from_edit_view(request,lead_id):
     pass
 
 def create_lead_template(request):
-    pass
-
+    formObj = LeadForm()
+    template = 'crm/crm_lead_new_form.html'
+    context = {'form':formObj}
+    return render(request,template,context)
+    
+    
+    
 def create_lead(request):
-    pass
+    if request.method == 'POST':
+        form = LeadForm(request.POST)
+        if form.is_valid():
+            subject = form.cleaned_data['subject']
+            customer = form.cleaned_data['customer']
+            stage = form.cleaned_data['stage']
+            priority = form.cleaned_data['priority']
+            email = form.cleaned_data['email']
+            mobile = form.cleaned_data['mobile']
+            fax = form.cleaned_data['fax']
+            street = form.cleaned_data['street']
+            street2 = form.cleaned_data['street2']
+            city = form.cleaned_data['city']
+            state = form.cleaned_data['state']
+            country = form.cleaned_data['country']
+            zip = form.cleaned_data['zip']
+            sales_person = form.cleaned_data['sales_person']
+            lead = CrmLead(subject=subject,customer=customer,stage=stage,priority=priority,email=email,mobile=mobile,fax=fax,street=street,
+                           street2=street2,city=city,state=state,country=country,zip_code=zip,sales_person=sales_person)
+            lead.save()
+            return HttpResponseRedirect(reverse('crm:lead_form_view',args=(lead.id,)))
+    else:
+        formObj = LeadForm()
+        template = 'crm/crm_lead_new_form.html'
+        context = {'form':formObj}
+    return render(request,template,context)
 
 def delete_lead(request,lead_id):    
     pass

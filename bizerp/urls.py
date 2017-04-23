@@ -22,5 +22,5 @@ urlpatterns = [
     url(r'^admin', admin.site.urls),
     url(r'^base/', include('base.urls', namespace='base')),
     url(r'^crm/', include('crm.urls', namespace='crm')),
-    url(r'', include('index.urls')),
+    url(r'', include('index.urls', namespace='index')),
 ]
