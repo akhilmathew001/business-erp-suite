@@ -3,6 +3,7 @@ Created on Apr 25, 2017
 
 @author: Akhil Mathew
 '''
+from __future__ import unicode_literals
 
 from django.db import models
 from django.contrib.auth.models import User
