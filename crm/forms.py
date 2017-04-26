@@ -29,3 +29,31 @@ class LeadForm(forms.Form):
     country = forms.ModelChoiceField(queryset=Country.objects.all(),empty_label='Select country', label='Country')
     zip = forms.IntegerField(label='Zip code')
     sales_person = forms.ModelChoiceField(queryset=User.objects.all(),empty_label='Select sales person',label='Sales person')
+    
+
+class ProductForm(forms.Form):
+    
+    producut_type_choices = [('stockable','Stockable'),('consumable','Consumable'),('service','Service')]
+    status = [('development','In developemt'),('normal','Normal'),('end','End of Life Cycle'),('obsolete','Obsolote')]
+    
+    image = forms.ImageField()
+    name = forms.CharField(label='Product Name',max_length=300,required=True)
+    sell_ok = forms.BooleanField(label='Can be sold')
+    purchase_ok = forms.BooleanField(label='Can be purchased')
+    product_type = forms.ChoiceField(label='Product Type', choices=producut_type_choices)
+    sale_price = forms.FloatField(label='Sale Price')
+    cost_price = forms.FloatField(label='Cost Price') 
+    product_status = forms.ChoiceField(label='Status',choices=status)
+    description = forms.CharField(label='Product Description',widget=forms.Textarea)
+    quantity_on_hand = forms.IntegerField(label='Quantity On Hand')
+    product_manager = forms.ModelChoiceField(queryset=User.objects.all(),empty_label='Select product manager'
+                                             ,label='Product Manager')
+    rack = forms.CharField(label='Rack')
+    row = forms.CharField(label='Row')
+    case = forms.CharField(label='Case')
+    warranty = forms.DurationField(label='Warranty')
+    lead_time = forms.DurationField(label='Customer Lead TIme')
+    description_purchase = forms.CharField(label='Purchase Description',widget=forms.Textarea)
+    description_sale = forms.CharField(label='Sales Description',widget=forms.Textarea)
+    
+        

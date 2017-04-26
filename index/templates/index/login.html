@@ -4,6 +4,7 @@
 	{% load static %}
 	<meta charset="ISO-8859-1">
 	<title>Login/Sign Up</title>
+	<link rel="shortcut icon" type="image/png" href="{% static 'index/images/favicon.png' %}"/>
 	<link type="text/css" rel="stylesheet" href="{% static 'index/css/loginpage_style.css' %}">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 	<script type="text/javascript" src="{% static 'index/js/loginpage.js' %}"></script>
@@ -14,7 +15,7 @@
 
 
    <div class="box">
-
+	  {% if message %}<div class="info_messaage">{{ user_created }}</div>{% endif %}
       <div class="title">LOGIN</div>
 	<form action="{% url 'index:login' %}" method="post">
 	  {% csrf_token %}
@@ -35,7 +36,7 @@
          <button><span>GO</span> <i class="fa fa-check"></i></button>
       </div>
     </form>
-      <a href="" class="pass-forgot">Forgot your password?</a>
+      <a href="{% url 'index:forgot-password' %}" class="pass-forgot">Forgot your password?</a>
 
    </div>
 
@@ -43,27 +44,27 @@
       <div class="material-button alt-2"><span class="shape"></span></div>
 
       <div class="title">REGISTER</div>
-   <form action="{% url 'index:signup' %}" method="post" class="signup-form">
-   	  {% csrf_token %}
-      <div class="input">
-         <label for="email">Email</label>
-         <input type="text" name="email" id="email">
-         <span class="spin"></span>
-      </div>
-      <div class="input">
-         <label for="regname">Username</label>
-         <input type="text" name="regname" id="regname">
-         <span class="spin"></span>
-      </div>
-      <div class="input">
-         <label for="regpass">Password</label>
-         <input type="password" name="regpass" id="regpass">
-         <span class="spin"></span>
-      </div>
-	  <div class="button">
-         <button class="signup-btn"><span>Sign Up</span></button>
-      </div>
-   </form>
+      <form action="{% url 'index:signup' %}" method="post" class="signup-form">
+   	    {% csrf_token %}
+        <div class="input">
+          <label for="email">Email</label>
+          <input type="text" name="email" id="email">
+          <span class="spin"></span>
+        </div>
+        <div class="input">
+          <label for="regname">Username</label>
+          <input type="text" name="regname" id="regname">
+          <span class="spin"></span>
+       </div>
+       <div class="input">
+          <label for="regpass">Password</label>
+          <input type="password" name="regpass" id="regpass">
+          <span class="spin"></span>
+       </div>
+	   <div class="button">
+          <button class="signup-btn"><span>Sign Up</span></button>
+       </div>
+     </form>
 
    </div>
 

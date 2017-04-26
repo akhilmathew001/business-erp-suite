@@ -21,7 +21,7 @@ def login(request):
         if username and password:
             try:
                 user = User.objects.filter(username=username)
-                pdb.set_trace()
+                #pdb.set_trace()
             except User.DoesNotExist:
                     error = traceback.format_exc()
                     raise Http404(error)
@@ -30,7 +30,8 @@ def login(request):
                     return render(request, template_name, context)
             else:
                 if user:
-                    if user.check_password(password):
+                    #pdb.set_trace()
+                    if user[0].check_password(password):
                         return HttpResponseRedirect(reverse('index:home')) 
                     else:
                         context = {'message':"User name and password don't match"}
@@ -53,10 +54,27 @@ def singnup(request):
     if request.method == 'POST':
         email = request.POST['email']
         user = request.POST['regname']
-        password = request.POST['regpass']
-        newUser = User.objects.create_user(username=user, email=email, password=password)
-        newUser.save()
-        pdb.set_trace()
-        return HttpResponseRedirect(reverse('index:login'))
+        if email and user:
+            extstngUser = User.objects.filter(username=user)
+            password = request.POST['regpass']
+            if extstngUser:
+                context = {'message':'User already exist. Please try login'}
+                template_name='index/login.html'
+                return render(request, template_name, context)
+            else:    
+                newUser = User.objects.create_user(username=user, email=email, password=password)
+                newUser.save()
+                context = {'user_created':'User created'}
+                return HttpResponseRedirect(reverse('index:login'))
+        else:
+            context = {'message':'Enter email, username and password to register'}
+            template_name='index/login.html'
+            return render(request, template_name, context)   
     else:
-        return Http404('Error')
+        template_name='index/login.html'
+        return render(request, template_name)
+    
+def forgot_password(request):
+    return HttpResponse('THIS FEATURE WILL BE ADDED SOON')    
+    
+    
