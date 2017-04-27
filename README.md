@@ -25,7 +25,7 @@ Installation process
    > or Download Zip version
 
 2. Initialize the database and all applications:
-     > python manage.py migrate
+     > python manage.py makemigrations and python manage.py migrate
 3. Statrt server
      > python manage.py runserver
     
