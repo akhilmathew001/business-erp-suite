@@ -140,40 +140,57 @@
         {% csrf_token %}
         <fieldset>
           <legend><span class="number">1</span> Lead Info</legend>
-          <label for="lead_subject">Subject *</label>
-          <input type="text" name="lead_subject" class="input-js" value="{{ lead.subject }}" placeholder="Subject" readonly="readonly"/>
-          <label for="lead_customer">Customer</label>
-          <select id="customer" name="lead_costomer" placeholder="customer" disabled="disabled">
+          <label for="subject">Subject *</label>
+          <input type="text" name="subject" class="input-js" value="{{ lead.subject }}" placeholder="Subject" readonly="readonly"/>
+          <label for="customer">Customer</label>
+          <select id="customer" name="customer" placeholder="customer" disabled="disabled">
             <option value="none">Select customer</option>
             {% for customer in  customers %}
               <option value="{{ customer.id }}" {% if customer == lead.customer %} selected="selected" {% endif %}>{{ customer }}</option>
             {% endfor %}
           </select>
-          <label for="customer_email">Email</label>
-          <input type="email" name="customer_email" value="{{ lead.email }}" placeholder="Email" readonly="readonly" />
-          <label for="customer_mobile">Mobile</label>
-          <input type="number" name="customer_mobile" value="{{ lead.mobile }}" placeholder="Mobile" readonly="readonly"/>
-          <label for="customer_street">Lane</label>
-          <input type="text" name="customer_street" value="{{ lead.street }}" placeholder="Lane" readonly="readonly" />
-          <label for="customer_street2">Street</label>
-          <input type="text" name="customer_street2" value="{{ lead.street2 }}" placeholder="Street" readonly="readonly" />
-          <label for="customer_city">City</label>
-          <input type="text" name="customer_city" value="{{ lead.city }}" placeholder="City" readonly="readonly" />
-          <label for="customer_state">State</label>
-          <select id="state" name="customer_state" placeholder="State" disabled="disabled" >
+          <label for="stage">Stage</label>
+          <select id="stage" name="stage" placeholder="Stage" disabled="disabled">
+            <option value="none">Select stage</option>
+            {% for value in  lead.stage %}
+              <option value="{{ value }}" {% if value == lead.stage %} selected="selected" {% endif %}>{{ value }}</option>
+            {% endfor %}
+          </select>
+          <label for="stage">Priority</label>
+          <select id="priority" name="priority" placeholder="Priority" disabled="disabled">
+            <option value="none">Select priority</option>
+            {% for value in  lead.priority %}
+              <option value="{{ value }}" {% if value == lead.priority %} selected="selected" {% endif %}>{{ value }}</option>
+            {% endfor %}
+          </select>
+          <label for="email">Email</label>
+          <input type="email" name="email" value="{{ lead.email }}" placeholder="Email" readonly="readonly" />
+          <label for="mobile">Mobile</label>
+          <input type="number" name="mobile" value="{{ lead.mobile }}" placeholder="Mobile" readonly="readonly"/>
+          <label for="fax">Fax</label>
+          <input type="text" name="fax" value="{{ lead.fax }}" placeholder="Fax" readonly="readonly" />
+          <label for="street">Lane</label>
+          <input type="text" name="street" value="{{ lead.street }}" placeholder="Lane" readonly="readonly" />
+          <label for="street2">Street</label>
+          <input type="text" name="street2" value="{{ lead.street2 }}" placeholder="Street" readonly="readonly" />
+          <label for="city">City</label>
+          <input type="text" name="city" value="{{ lead.city }}" placeholder="City" readonly="readonly" />
+          <label for="state">State</label>
+          <select id="state" name="state" placeholder="State" disabled="disabled" >
             <option value="none">Select state</option>
             {% for state in  states %}
               <option value="{{ state.id }}" {% if state == lead.state %} selected="selected" {% endif %}>{{ state }}</option>
             {% endfor %}
           </select>
-          <label for="customer_country">Country</label>
-          <select id="country" name="customer_country" placeholder="Country" disabled="disabled">
+          <label for="country">Country</label>
+          <select id="country" name="country" placeholder="Country" disabled="disabled">
             <option value="none">Select country</option>
             {% for country in  countries %}
               <option value="{{ country.id }}" {% if country == lead.country %} selected="selected" {% endif %}>{{ country }}</option>
             {% endfor %}
           </select>
-          
+          <label for="zip">Zip</label>
+          <input type="text" name="zip" value="{{ lead.zip }}" placeholder="Zip" readonly="readonly" /> 
         </fieldset>
         <fieldset>
           <legend><span class="number">2</span> Product Info</legend>

@@ -7,7 +7,7 @@ $(document).ready(function(){
   $('.btn-edit.mdl-button.mdl-js-button.mdl-button--raised.mdl-js-ripple-effect').click(function(){
     $(this).hide();
     $(':input').removeAttr('readonly');
-    $('#state,#country,#sales_person').removeAttr('disabled');
+    $('#state,#country,#sales_person,#customer,#stage,#priority').removeAttr('disabled');
     $('#checkbox-onchange-jq').show();
     $('.btn-dlt').hide();
     $('.btn-prnt').hide();

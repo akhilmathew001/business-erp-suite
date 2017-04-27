@@ -7,7 +7,7 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .forms import LeadForm
-from django.contrib.auth.models import Permission
+import pdb
 # Create your views here.
 
 
@@ -42,12 +42,16 @@ def lead_save_from_edit_view(request,lead_id):
     if request.method == 'POST':
             try:
                 lead = CrmLead.objects.get(pk=lead_id)
-                #lead = get_object_or_404(CrmLead,pk=lead_id)
+                customer = get_object_or_404(Customer,pk=request.POST['customer'])
+                state = get_object_or_404(State,pk=request.POST['state'])
+                country = get_object_or_404(Country,pk=request.POST['country'])
+                sales_person = get_object_or_404(User,pk=request.POST['sales_person'])
             except CrmLead.DoesNotExist:
                 raise Http404('Specified lead not found')
+            except Customer.DoesNotExist:
+                raise Http404('Selected customer doesnot exist or is not a valid one')
             else:        
                 subject = request.POST['subject']
-                customer = request.POST['customer']
                 stage = request.POST['stage']
                 priority = request.POST['priority']
                 email = request.POST['email']
@@ -56,12 +60,10 @@ def lead_save_from_edit_view(request,lead_id):
                 street = request.POST['street']
                 street2 = request.POST['street2']
                 city = request.POST['city']
-                state = request.POST['state']
-                country = request.POST['country']
                 zip = request.POST['zip']
-                sales_person = request.POST['sales_person']
                 lead = CrmLead(id=lead.id, subject=subject,customer=customer,stage=stage,priority=priority,email=email,mobile=mobile,fax=fax,street=street,
                            street2=street2,city=city,state=state,country=country,zip_code=zip,sales_person=sales_person)
+                pdb.set_trace()
                 lead.save()
                 return HttpResponseRedirect(reverse('crm:lead_form_view',args=(lead.id,)))
     else:
