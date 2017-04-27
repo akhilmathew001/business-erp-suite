@@ -7,6 +7,7 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .forms import LeadForm
+from django.contrib.auth.models import Permission
 # Create your views here.
 
 
@@ -38,14 +39,39 @@ def lead_form_view(request,lead_id):
     
 @login_required    
 def lead_save_from_edit_view(request,lead_id):
-    pass
+    if request.method == 'POST':
+            try:
+                lead = CrmLead.objects.get(pk=lead_id)
+                #lead = get_object_or_404(CrmLead,pk=lead_id)
+            except CrmLead.DoesNotExist:
+                raise Http404('Specified lead not found')
+            else:        
+                subject = request.POST['subject']
+                customer = request.POST['customer']
+                stage = request.POST['stage']
+                priority = request.POST['priority']
+                email = request.POST['email']
+                mobile = request.POST['mobile']
+                fax = request.POST['fax']
+                street = request.POST['street']
+                street2 = request.POST['street2']
+                city = request.POST['city']
+                state = request.POST['state']
+                country = request.POST['country']
+                zip = request.POST['zip']
+                sales_person = request.POST['sales_person']
+                lead = CrmLead(id=lead.id, subject=subject,customer=customer,stage=stage,priority=priority,email=email,mobile=mobile,fax=fax,street=street,
+                           street2=street2,city=city,state=state,country=country,zip_code=zip,sales_person=sales_person)
+                lead.save()
+                return HttpResponseRedirect(reverse('crm:lead_form_view',args=(lead.id,)))
+    else:
+        return render(request,'crm/crm_lead_list.html')
 
 def create_lead_template(request):
     formObj = LeadForm()
     template = 'crm/crm_lead_new_form.html'
     context = {'form':formObj}
     return render(request,template,context)
-    
     
     
 def create_lead(request):
@@ -77,4 +103,13 @@ def create_lead(request):
     return render(request,template,context)
 
 def delete_lead(request,lead_id):    
-    pass
+    try:
+        lead = get_object_or_404(CrmLead,pk=lead_id)  
+    except CrmLead.DoesNotExist:
+        raise Http404('Lead does not exist')
+    else:
+        lead.delete()
+        return HttpResponseRedirect(reverse('crm/crm_lead_list.html'))
+    
+    
+    

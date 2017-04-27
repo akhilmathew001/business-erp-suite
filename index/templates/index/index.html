@@ -62,11 +62,12 @@
             <nav class="erp-navigation mdl-navigation">
               <a class="mdl-navigation__link mdl-typography--text-uppercase" href="{% url 'index:home' %}">Home</a>
               <button class="mdl-navigation__link mdl-typography--text-uppercase mdl-button mdl-js-button" id="crm-menu-lower">
-              	CRM
+              	Sales
               </button>
               <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="crm-menu-lower">
      			<li class="mdl-menu__item"><a href="{% url 'base:customer_list_view' %}" style="text-decoration:none;font-size:18px;">Customer</a></li>
       			<li class="mdl-menu__item"><a href="{% url 'crm:leads_list_view' %}" style="text-decoration:none;font-size:18px;">Leads</a></li>
+      			<li class="mdl-menu__item"><a href="{% url 'crm:leads_list_view' %}" style="text-decoration:none;font-size:18px;">Products</a></li>
       			<li disabled class="mdl-menu__item">Disabled Action</li>
       			<li class="mdl-menu__item">Yet Another Action</li>
     		  </ul>
@@ -105,9 +106,6 @@
           <img class="erp-logo-image" src="{% static 'index/images/bizlogo.png' %}">
         </span>
         <nav class="mdl-navigation">
-          <button class="mdl-navigation__link mdl-typography--text-uppercase mdl-button mdl-js-button" id="crm-menu-lower">
-              	CRM
-          </button>
           <a class="mdl-navigation__link" href="">CRM</a>
           <a class="mdl-navigation__link" href="">Tablets</a>
           <a class="mdl-navigation__link" href="">Wear</a>

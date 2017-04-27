@@ -7,6 +7,7 @@ Created on Apr 19, 2017
 from django import forms
 from base.models.customer import Customer
 from base.models.company import State,Country
+from crm.models.product import Product
 from django.contrib.auth.models import User
 
 
@@ -17,6 +18,7 @@ class LeadForm(forms.Form):
     
     subject = forms.CharField(label='Subject', required=True)
     customer = forms.ModelChoiceField(queryset=Customer.objects.all(),empty_label='Select customer',label='Customer')
+    products = forms.ModelMultipleChoiceField(queryset=Product.objects.all(),label='Products')
     stage = forms.ChoiceField(label='Stage',choices=stage_choice)
     priority = forms.ChoiceField(label='Priority',choices=priority_choice)
     email = forms.EmailField(label='Email')

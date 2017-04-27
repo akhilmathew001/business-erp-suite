@@ -55,7 +55,7 @@
           <!-- Navigation -->
           <div class="erp-navigation-container">
             <nav class="erp-navigation mdl-navigation">
-              <a class="mdl-navigation__link mdl-typography--text-uppercase" href="{% url 'home' %}">Home</a>
+              <a class="mdl-navigation__link mdl-typography--text-uppercase" href="{% url 'index:home' %}">Home</a>
               <button class="mdl-navigation__link mdl-typography--text-uppercase mdl-button mdl-js-button" id="crm-menu-lower">
               	CRM
               </button>
@@ -89,7 +89,7 @@
 
       <div class="erp-drawer mdl-layout__drawer">
         <span class="mdl-layout-title">
-          <img class="erp-logo-image" src="{% static 'index/images/bizerplogo.png' %}">
+          <img class="erp-logo-image" src="{% static 'index/images/bizlogo.png' %}">
         </span>
         <nav class="mdl-navigation">
           <button class="mdl-navigation__link mdl-typography--text-uppercase mdl-button mdl-js-button" id="crm-menu-lower">
@@ -124,13 +124,19 @@
       <div class="erp-content mdl-layout__content">
         
         
-           <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+   	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script>
-      $(document).ready(function($) {
+      $(document).ready(function() {
     	
     	$(".clickable-row").click(function() {
         	window.location = $(this).data("href");
         });
+    	
+    	$('.mdl-checkbox__input').change(function() {
+    		debugger;
+    		alert('Clicked');
+    		$('.button.btn-delete').show();
+    	});
         
       });
     </script>
