@@ -10,7 +10,7 @@ from .forms import LeadForm
 import pdb
 # Create your views here.
 
-@login_required(redirect_field_name='next',login_url='/lead/createLead')
+@login_required(redirect_field_name='next',login_url='/login/')
 def leads_list_view(request):
     leads = CrmLead.objects.all()
     template_name = 'crm/crm_lead_list.html'

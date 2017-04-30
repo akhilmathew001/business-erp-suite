@@ -2,11 +2,14 @@ from django.shortcuts import render, HttpResponseRedirect
 from django.http import HttpResponse,Http404
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
+from django.contrib.auth import authenticate,login,logout
 import pdb
 import traceback
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
-def get_index_or_login_view(request):
+@login_required(login_url='/login/')
+def get_home_or_login_view(request):
     return render(request, 'index/login.html')
 
 def home_view(request):
@@ -14,31 +17,31 @@ def home_view(request):
     return render(request, template_name)
 
 
-def login(request):
+def login_user(request):
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['pass']
         if username and password:
-            try:
-                user = User.objects.filter(username=username)
-                #pdb.set_trace()
-            except User.DoesNotExist:
-                    error = traceback.format_exc()
-                    raise Http404(error)
+            user = authenticate(username=username,password=password)
+            #pdb.set_trace()
+            if user is None:
+                check = User.objects.filter(username=username)
+                try:
+                    if check[0]:
+                        context = {'message':"User name and password has no match"}
+                        template_name='index/login.html'
+                        return render(request, template_name, context)
+                except IndexError:
                     context = {'message':'User Not Found'}
                     template_name='index/login.html'
                     return render(request, template_name, context)
-            else:
-                if user:
-                    #pdb.set_trace()
-                    if user[0].check_password(password):
-                        return HttpResponseRedirect(reverse('index:home')) 
-                    else:
-                        context = {'message':"User name and password don't match"}
-                        template_name='index/login.html'
-                        return render(request, template_name, context)
+            
+            if user is not None:
+                if user.is_active:
+                    login(request, user)
+                    return HttpResponseRedirect(reverse('index:home'))
                 else:
-                    context = {'message':'User Not Found'}
+                    context = {'message':"This is a disabled user account, You can't login"}
                     template_name='index/login.html'
                     return render(request, template_name, context)
         else:
@@ -49,6 +52,7 @@ def login(request):
         template_name='index/login.html'
         return render(request, template_name)      
             
+
 
 def singnup(request):
     if request.method == 'POST':
@@ -77,4 +81,9 @@ def singnup(request):
 def forgot_password(request):
     return HttpResponse('THIS FEATURE WILL BE ADDED SOON')    
     
-    
+def logout_user(request):
+    logout(request)
+    context = {'message':'You have succesfully logged out...'}
+    template_name='index/login.html'
+    return render(request, template_name, context) 
+       

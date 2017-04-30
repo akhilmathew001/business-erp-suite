@@ -17,15 +17,16 @@
 
 .error_messaage{
 	
-	width: 250px;
-    float: left;
-    font-size: 25px;
-    font-weight: 700;
-    letter-spacing: 0px;
-    color: #ff5722;
-    position: relative;
-    border: 3px solid #607D8B;
-    text-align: center;
+	margin: 0 10px 15px 10px;
+    padding: 20px 53px 15px 50px;
+    color: #B94A48;
+    list-style-type: disc;
+    background-color: #F2DEDE;
+    border: 2px solid #EED3D7;
+    border-radius: 4px;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+    margin-top: 58px;
+    box-shadow: inset 1px 1px 3px rgba(233, 30, 99, 0.92);
 	
 }
 
