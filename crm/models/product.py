@@ -7,10 +7,10 @@ from __future__ import unicode_literals
 
 from django.db import models
 from django.contrib.auth.models import User
+from crm.choices import unit_choice,product_type_choices,status
 
 class ProductUOM(models.Model):
     
-    unit_choice = [('unit','Unit'),('weight','Weight'),('volume','Volume'),('length','Length'),('time','Time')]
     
     name = models.CharField('Unit of measure', max_length=50,blank=False)
     unit = models.CharField('Unit category',max_length=50,choices=unit_choice)
@@ -21,14 +21,11 @@ class ProductUOM(models.Model):
 
 class Product(models.Model):
     
-    producut_type_choices = [('stockable','Stockable'),('consumable','Consumable'),('service','Service')]
-    status = [('development','In developemt'),('normal','Normal'),('end','End of Life Cycle'),('obsolete','Obsolote')]
-    
     name = models.CharField('Product Name',max_length=300,blank=False)
     sell_ok = models.BooleanField('Can be sold')
     purchase_ok = models.BooleanField('Can be purchased')
     image = models.ImageField(blank=True)
-    product_type = models.CharField('Product Type',max_length=12,choices=producut_type_choices,blank=True)
+    product_type = models.CharField('Product Type',max_length=12,choices=product_type_choices,blank=True)
     product_uom = models.ForeignKey(ProductUOM,on_delete=models.CASCADE,blank=True,null=True)
     sale_price = models.FloatField('Sale Price',blank=True)
     cost_price = models.FloatField('Cost Price',blank=True) 

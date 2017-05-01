@@ -1,2 +1,2 @@
 from . import product
-from . import crm
+from crm.models import lead

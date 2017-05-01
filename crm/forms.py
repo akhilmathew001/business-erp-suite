@@ -9,12 +9,10 @@ from base.models.customer import Customer
 from base.models.company import State,Country
 from crm.models.product import Product
 from django.contrib.auth.models import User
+from crm.choices import priority_choice,stage_choice
 
 
 class LeadForm(forms.Form):
-    
-    stage_choice = [('new','New'),('progress','In progress'),('matured','Matured'),('dead','Dead')]
-    priority_choice = [('low','Low'),('normal','Normal'),('high','High'),('veryhigh','Very High')]
     
     subject = forms.CharField(label='Subject', required=True)
     customer = forms.ModelChoiceField(queryset=Customer.objects.all(),empty_label='Select customer',label='Customer')

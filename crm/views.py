@@ -1,5 +1,5 @@
 from django.shortcuts import render,get_object_or_404,Http404,HttpResponseRedirect
-from crm.models.crm import CrmLead
+from crm.models.lead import CrmLead
 from base.models.customer import Customer
 from base.models.company import Company,State,Country
 from django.views.decorators.cache import cache_control
