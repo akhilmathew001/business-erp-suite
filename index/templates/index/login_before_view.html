@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		{% load static %}
+		<meta charset="ISO-8859-1">
+		<title>Login</title>
+		<link rel="shortcut icon" type="image/png" href="{% static 'index/images/favicon.png' %}"/>
+		<link type="text/css" rel="stylesheet" href="{% static 'index/css/loginpage_style.css' %}">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+		<script type="text/javascript" src="{% static 'index/js/loginpage.js' %}"></script>
+	</head>
+	<body>
+	
+	  <div class="materialContainer">
+  		 <div class="box">
+	  		{% if user_created %}<div class="info_messaage">{{ user_created }}</div>{% endif %}
+      		<div class="title">LOGIN</div>
+				<form action="{% url 'index:redirect-after-login' %}" method="post">
+	  				{% csrf_token %}
+	  				{% if message %}<div class="error_messaage">{{ message }}</div>{% endif %}
+      				<div class="input">
+         				<label for="name">Username</label>
+         				<input type="text" name="username" id="name">
+         				<span class="spin"></span>
+     				</div>
+					<input type="hidden" name="next" value="{{ request.GET.next }}">
+      				<div class="input">
+         				<label for="pass">Password</label>
+         				<input type="password" name="pass" id="pass">
+         				<span class="spin"></span>
+      				</div>
+
+      				<div class="button login">
+         				<button><span>GO</span> <i class="fa fa-check"></i></button>
+      				</div>
+    			</form>
+      		<a href="{% url 'index:forgot-password' %}" class="pass-forgot">Forgot your password?</a>
+
+   		</div>
+
+	 </div>
+	
+	
+   </body>
+</html>

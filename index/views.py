@@ -8,13 +8,49 @@ import traceback
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 
-@login_required(login_url='/login/')
+@login_required(login_url='/loginBeforeView')
 def get_home_or_login_view(request):
-    return render(request, 'index/login.html')
+    if request.user.is_authenticated():
+        return render(request, 'index/index.html')
+    else:
+        return render(request, 'index/login.html')
 
+@login_required(login_url='/loginBeforeView')
 def home_view(request):
     template_name = 'index/index.html'
     return render(request, template_name)
+
+def login_before_view(request):
+    template = 'index/login_before_view.html'
+    return render(request, template)
+
+def redirect_after_login(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['pass']
+        if username and password:
+            user = authenticate(username=username,password=password)
+            if user is not None:
+                if user.is_active:
+                    redirectTO = request.POST['next']
+                    login(request, user)
+                    return HttpResponseRedirect(redirectTO)
+                else:
+                    template = 'index/login_before_view.html'
+                    context = {'message':"This is a disabled user account, You can't login"}
+                    return render(request, template, context)
+            if user is None:
+                template = 'index/login_before_view.html'
+                context = {'message':'No user found!'}
+                return render(request, template, context)
+                
+        else:
+            template = 'index/login_before_view.html'
+            context = {'message':'Enter username and password to login'}
+            return render(request, template, context)
+    else:
+        template = 'index/login_before_view.html'
+        return render(request, template)
 
 
 def login_user(request):

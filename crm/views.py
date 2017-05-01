@@ -10,7 +10,7 @@ from .forms import LeadForm
 import pdb
 # Create your views here.
 
-@login_required(redirect_field_name='next',login_url='/login/')
+@login_required(redirect_field_name='next',login_url='/loginBeforeView')
 def leads_list_view(request):
     leads = CrmLead.objects.all()
     template_name = 'crm/crm_lead_list.html'
@@ -37,7 +37,7 @@ def lead_form_view(request,lead_id):
     else:
         raise Http404('No Lead Specified')
     
-@login_required    
+@login_required(redirect_field_name='next',login_url='/loginBeforeView')   
 def lead_save_from_edit_view(request,lead_id):
     if request.method == 'POST':
             try:
