@@ -6,13 +6,10 @@ from base.models.company import Company,Country,State
 from product import Product 
 from django.contrib.auth.models import User
 from datetime import datetime
-
+from crm.choices import stage_choice,priority_choice
 
 
 class CrmLead(models.Model):
-
-    stage_choice = [('new','New'),('progress','In progress'),('matured','Matured'),('dead','Dead')]
-    priority_choice = [('low','Low'),('normal','Normal'),('high','High'),('veryhigh','Very High')]
 
     subject = models.CharField('Subject',max_length=300,blank=False)
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE, verbose_name='Customer',blank=False)
