@@ -10,7 +10,7 @@ priority_choice = (('low','Low'),('normal','Normal'),('high','High'),('veryhigh'
 
 sale_order_state = (('draft', 'Draft Quotation'),('sent', 'Quotation Sent'),('cancel', 'Cancelled'),
             ('waiting_date', 'Waiting Schedule'),('progress', 'Sales Order'),('manual', 'Sale to Invoice'),
-            ('shipping_except', 'Shipping Exception')('invoice_except', 'Invoice Exception'),('done', 'Done'))
+            ('shipping_except', 'Shipping Exception'),('invoice_except', 'Invoice Exception'),('done', 'Done'))
 
 shipping_policy = (('direct','Deliver each product when available'),('one','Deliver all products at once'))
 

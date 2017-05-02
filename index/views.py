@@ -6,10 +6,13 @@ from django.contrib.auth import authenticate,login,logout
 import pdb
 import traceback
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import views as auth_views
 # Create your views here.
+#nextmedialabs.com nextmedia.io 
 
 @login_required(login_url='/loginBeforeView')
 def get_home_or_login_view(request):
+    #pdb.set_trace()
     if request.user.is_authenticated():
         return render(request, 'index/index.html')
     else:
@@ -115,7 +118,8 @@ def singnup(request):
         return render(request, template_name)
     
 def forgot_password(request):
-    return HttpResponse('THIS FEATURE WILL BE ADDED SOON')    
+    template_response = auth_views.password_change(request)
+    return template_response    
     
 def logout_user(request):
     logout(request)
