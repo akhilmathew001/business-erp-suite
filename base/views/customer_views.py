@@ -5,7 +5,7 @@ from base.models.customer import Customer
 from base.models.company import State,Country,Company
 from django.views.decorators.cache import cache_control
 import traceback
-from pip.cmdoptions import no_cache
+from base.forms.CustomerForm import CustomerForm
 # Create your views here.
 
    ## CUSTOMER
@@ -21,13 +21,11 @@ def form_view(request,customer_id):
     if customer_id:
         try:
             customer = get_object_or_404(Customer,pk=customer_id)
-            states = State.objects.all()
-            countries = Country.objects.all()
-            companies = Company.objects.all()
-            context = {'customer_obj':customer,'states':states,'countries':countries,'companies':companies}
         except Customer.DoesNotExist:
             raise Http404('Customer does not exist')
-        else:    
+        else:  
+            customer_form = CustomerForm(customer)
+            context = {'customer_obj':customer_form}  
             return render(request, 'base/customer_form_view.html', context)
     else:
         raise Http404('Customer ID not specified')
