@@ -19,6 +19,7 @@ class Customer(models.Model):
     city = models.CharField('City',max_length=250, blank=True)
     state = models.ForeignKey(State, verbose_name='State',blank=True, on_delete=models.CASCADE, null=True)
     country = models.ForeignKey(Country, verbose_name='Country',blank=True, on_delete=models.CASCADE ,null=True)
+    zip = models.IntegerField('Zip Code',blank=True)
     note = models.TextField('Internal Note',blank=True)
     date_create = models.DateTimeField(auto_now_add=True,null=True)
 

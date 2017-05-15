@@ -20,5 +20,6 @@ class CustomerForm(forms.Form):
     city = forms.CharField(label='City',max_length=250)
     state = forms.ModelChoiceField(queryset=State.objects.all(), empty_label='Select state', label='State')
     country = forms.ModelChoiceField(queryset=Country.objects.all(), empty_label='Select country' ,label='Country')
+    zip = forms.IntegerField(label='Zip Code')
     note = forms.CharField(label='Internal Note',widget=forms.Textarea)
     date_create = forms.DateTimeField()

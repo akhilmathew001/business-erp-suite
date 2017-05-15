@@ -1,11 +1,10 @@
 {% extends 'index/FormView.html' %}
  {% load static %}
  
- {% block form_title %}<title>Customer: {{ customer_obj['name'] }}</title>{% endblock %}
+ {% block form_title %}<title>Customer: {{ customer_obj.name }}</title>{% endblock %}
  
  {% block form_style_js %} 
- 	<link href="{% static 'index/css/materialize.css' %}" rel="stylesheet" type="text/css" />
-    <script src="{% static 'index/js/materialize.js' %}" type="text/javascript" ></script>
+ 	
  {% endblock %}
  
  {% block form_section %}
@@ -32,64 +31,79 @@
         {% csrf_token %}
         <legend><span class="number">1</span> Customer Info</legend>
         <div class="row">
+            <div class="input-field col s12">
+        	  {{ customer.image }}
+        	  <label class="active" for="id_image">Image</label>
+            </div>
+        </div>
+        <div class="row">
         	<div class="input-field col s6">
         		<i class="material-icons prefix">account_circle</i>
-          		<input id="customer_name" name="customer_name" value="{{ customer_obj.name }}" type="text" class="validate input-js">
-          		<label class="active" for="customer_name">Name</label>
-          		<input type="checkbox" name="is_company" {% if customer_obj.is_company %} value="True" {% else %} value="False" {% endif %} class="filled-in" id="filled-in-box"  />
-                <label for="filled-in-box">Is a company</label>
+          		{{ customer.name }}
+          		<label class="active" for="id_name">Name</label>
+          		<br/>
+          		{{ customer.is_company }}
+                <label for="id_is_company">Is a company</label>
         	</div>
         	<div class="input-field col s6">
-          		<input id="last_name" type="text" class="validate">
-          		<label for="last_name">Last Name</label>
+        		<i class="material-icons prefix">phone</i>
+          		{{ customer.mobile }}
+          		<label for="id_mobile">Mobile</label>
         	</div>
       	</div>
-        <fieldset>
-          
-          <label for="customer_name">Name *</label>
-          <input type="text" name="customer_name" class="input-js" value="{{ customer_obj.name }}" placeholder="Name *" readonly="readonly"/>
-          <label for="is_company" style="margin-top: -16px; margin-bottom: 15px;">Is a company?
-            <input id="checkbox-onchange-jq" type="checkbox" name="is_company" {% if customer_obj.is_company %} value="True" {% else %} value="False" {% endif %} placeholder="Is company"/>
-          </label>
-          <div class="onchange-field" style="display:none;">
-            <label for="customer_company">Company</label>
-            <select id="comapany" name="customer_company" placeholder="Company" disabled="disabled">
-              <option value="none">Select company</option>
-              {% for company in companies %}
-                <option value="{{ company.id }}" {% if company == customer_obj.company %} selected="selected" {% endif %}>{{ company }}</option>
-                {% endfor %}
-            </select>
+      	<div class="row">
+      	  <div class="input-field col s6">
+      	   <selection>
+            {{ customer.company }}
+           </selection> 
+            <label for="id_company">Company</label>
           </div>
-          <label for="customer_email">Email</label>
-          <input type="email" name="customer_email" value="{{ customer_obj.email }}" placeholder="Email" readonly="readonly" />
-          <label for="customer_mobile">Mobile</label>
-          <input type="number" name="customer_mobile" value="{{ customer_obj.mobile }}" placeholder="Mobile" readonly="readonly"/>
-          <label for="customer_street">Lane</label>
-          <input type="text" name="customer_street" value="{{ customer_obj.street }}" placeholder="Lane" readonly="readonly" />
-          <label for="customer_street2">Street</label>
-          <input type="text" name="customer_street2" value="{{ customer_obj.street2 }}" placeholder="Street" readonly="readonly" />
-          <label for="customer_city">City</label>
-          <input type="text" name="customer_city" value="{{ customer_obj.city }}" placeholder="City" readonly="readonly" />
-          <label for="customer_state">State</label>
-          <select id="state" name="customer_state" placeholder="State" disabled="disabled" >
-            <option value="none">Select state</option>
-            {% for state in  states %}
-              <option value="{{ state.id }}" {% if state == customer_obj.state %} selected="selected" {% endif %}>{{ state }}</option>
-            {% endfor %}
-          </select>
-          <label for="customer_country">Country</label>
-          <select id="country" name="customer_country" placeholder="Country" disabled="disabled">
-            <option value="none">Select country</option>
-            {% for country in  countries %}
-              <option value="{{ country.id }}" {% if country == customer_obj.country %} selected="selected" {% endif %}>{{ country }}</option>
-            {% endfor %}
-          </select>
-        </fieldset>
-        <fieldset>
-          <legend><span class="number">2</span> Additional Info</legend>
-          <label for="customer_note">Note</label>
-          <textarea name="customer_note" placeholder="About customer">{{ customer_obj.note }}</textarea>
-        </fieldset>
+        </div>  
+      	<div class="row">
+        	<div class="input-field col s12">
+          		{{ customer.email }}
+          		<label for="id_email">Email</label>
+        	</div>
+        </div>
+      	<legend><span class="number">2</span>Address</legend>
+      	<div class="row">
+        	<div class="input-field col s4">
+          		{{ customer.street }}
+          		<label for="id_street">Lane</label>
+        	</div>
+        	<div class="input-field col s4">
+          		{{ customer.street2 }}
+          		<label for="id_street2">Street</label>
+        	</div>
+        	
+        	<div class="input-field col s4">
+          		{{ customer.city }}
+          		<label for="id_city">City</label>
+        	</div>
+      	</div>
+      	<div class="row">
+        	<div class="input-field col s4">
+          		{{ customer.state }}
+          		<label for="id_state">State</label>
+        	</div>
+        	<div class="input-field col s4">
+          		{{ customer.country }}
+          		<label for="id_country">Country</label>
+        	</div>
+        	
+        	<div class="input-field col s4">
+          		{{ customer.zip }}
+          		<label for="id_zip">Zip</label>
+        	</div>
+      	</div>
+     
+      <legend><span class="number">3</span> Additional Info</legend>
+       <div class="row">
+       	 <div class="input-field col s12">
+       	    {{ customer.note }}
+            <label for="id_note">Note</label>
+          </div>
+       </div> 
         <input type="submit" class="submit-jq mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" value="Save"/>
       </form>
     </div>
