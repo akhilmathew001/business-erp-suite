@@ -26,7 +26,7 @@
         	</a>
         </button>
     </div>
-    <div class="form-style-5">
+    <div class="form-style-5 row">
       <form action="{% url 'base:edit_customer' customer_obj.id %}" method="post" id="form-jq" class="col s12">
         {% csrf_token %}
         <legend><span class="number">1</span> Customer Info</legend>
@@ -53,16 +53,14 @@
       	</div>
       	<div class="row">
       	  <div class="input-field col s6">
-      	   <selection>
-            {{ customer.company }}
-           </selection> 
+            {{ customer.company }} 
             <label for="id_company">Company</label>
           </div>
         </div>  
       	<div class="row">
         	<div class="input-field col s12">
           		{{ customer.email }}
-          		<label for="id_email">Email</label>
+          		<label for="id_email" data-error="wrong" data-success="right">Email</label>
         	</div>
         </div>
       	<legend><span class="number">2</span>Address</legend>

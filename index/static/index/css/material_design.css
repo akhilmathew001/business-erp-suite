@@ -173,138 +173,6 @@ a img{
   padding-top: 24px;
 }
 
-.erp-create-character {
-  font-size: 21px;
-  padding-top: 400px;
-}
-
-  .erp-create-character a {
-    text-decoration: none;
-    color: #767777;
-    font-weight: 300;
-  }
-
-.erp-screen-section {
-  position: relative;
-  padding-top: 60px;
-  padding-bottom: 80px;
-}
-
-.erp-screens {
-  text-align: right;
-  width: 100%;
-  white-space: nowrap;
-  overflow-x: auto;
-  background:url('/static/index/images/slide01.jpg');
-}
-
-.erp-screen {
-  text-align: center;
-}
-
-.erp-screen .erp-link {
-  margin-top: 16px;
-  display: block;
-  z-index: 2;
-}
-
-.erp-image-link {
-  text-decoration: none;
-}
-
-.erp-wear {
-  display: inline-block;
-  width: 160px;
-  margin-right: 32px;
-}
-
-  .erp-wear .erp-screen-image {
-    width: 40%;
-    z-index: 1;
-  }
-
-
-.erp-phone {
-  display: inline-block;
-  width: 64px;
-  margin-right: 48px;
-}
-
-  .erp-phone .erp-screen-image {
-    width: 100%;
-    z-index: 1;
-  }
-
-
-.erp-tablet {
-  display: inline-block;
-  width: 110px;
-  margin-right: 64px;
-}
-
-  .erp-tablet .erp-screen-image {
-    width: 100%;
-    z-index: 1;
-  }
-
-  .erp-tablet .erp-link {
-    display: block;
-    z-index: 2;
-  }
-
-
-.erp-tv {
-  display: inline-block;
-  width: 300px;
-  margin-right: 80px;
-}
-
-  .erp-tv .erp-screen-image {
-    width: 100%;
-    z-index: 1;
-  }
-
-
-.erp-auto {
-  display: inline-block;
-  width: 300px;
-  overflow: hidden;
-}
-
-  .erp-auto .erp-screen-image {
-    display: block;
-    height: 300px;
-    z-index: 1;
-  }
-
-
-.erp-wear-section {
-  position: relative;
-  background: url('/static/index/images/wear.png') center top no-repeat;
-  background-size: cover;
-  height: 800px;
-}
-
-.erp-wear-band {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
-  background-color: #37474f;
-}
-
-.erp-wear-band-text {
-  max-width: 800px;
-  margin-left: 25%;
-  padding: 24px;
-  text-align: left;
-  color: white;
-}
-
-  .erp-wear-band-text p {
-    padding-top: 8px;
-  }
-
 .erp-link {
   text-decoration: none;
   color: #8bc34a !important;
@@ -504,26 +372,9 @@ a img{
     padding-top: 8px;
   }
 
-  .erp-create-character {
-    padding-top: 200px;
-    font-size: 16px;
-  }
-
-  .erp-create-character img {
-    height: 12px;
-  }
-
   .erp-fab {
     display: none;
   }
 
-  .erp-wear-band-text {
-    margin-left: 0;
-    padding: 16px;
-  }
-
-  .erp-footer .mdl-mega-footer--bottom-section {
-    display: none;
-  }
 }
 
